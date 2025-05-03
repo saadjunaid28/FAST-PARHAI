@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discussion Forum - FAST Parhai</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/forum.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>FAST Parhai</h2>
+                <button id="sidebarToggle" class="sidebar-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <div class="sidebar-user">
+                <div class="user-avatar">
+                   
+                </div>
+                <div class="user-info">
+                    <h3 id="userName">Ahmed Khan</h3>
+                    <p>6th Semester</p>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="dashboard.html">
+                            <i class="fas fa-home"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="upload-notes.html">
+                            <i class="fas fa-upload"></i>
+                            <span>Upload Notes</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="browse-notes.html">
+                            <i class="fas fa-book"></i>
+                            <span>Browse Notes</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="forum.html">
+                            <i class="fas fa-comments"></i>
+                            <span>Forum</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="profile.html">
+                            <i class="fas fa-user"></i>
+                            <span>Profile</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-divider"></li>
+                    <li>
+                        <a href="#" id="logoutBtn">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="content-header">
+                <div class="header-left">
+                    <h1>Discussion Forum</h1>
+                </div>
+                <div class="header-right">
+                    <div class="theme-toggle">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="forum-container">
+                <div class="forum-header">
+                    <div class="forum-search">
+                        <input type="text" placeholder="Search questions..." id="forum-search-input">
+                        <button class="search-btn">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                    <button class="btn btn-primary" id="ask-question-btn">
+                        <i class="fas fa-plus"></i> Ask a Question
+                    </button>
+                </div>
+
+                <div class="forum-filters">
+                    <div class="filter-group">
+                        <label for="filter-category">Category:</label>
+                        <select id="filter-category">
+                            <option value="all">All Categories</option>
+                            <option value="general">General</option>
+                            <option value="courses">Courses</option>
+                            <option value="exams">Exams & Quizzes</option>
+                            <option value="projects">Projects</option>
+                            <option value="career">Career</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="filter-sort">Sort By:</label>
+                        <select id="filter-sort">
+                            <option value="newest">Newest</option>
+                            <option value="oldest">Oldest</option>
+                            <option value="most-answers">Most Answers</option>
+                            <option value="no-answers">No Answers</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="filter-semester">Semester:</label>
+                        <select id="filter-semester">
+                            <option value="all">All Semesters</option>
+                            <option value="1">1st Semester</option>
+                            <option value="2">2nd Semester</option>
+                            <option value="3">3rd Semester</option>
+                            <option value="4">4th Semester</option>
+                            <option value="5">5th Semester</option>
+                            <option value="6">6th Semester</option>
+                            <option value="7">7th Semester</option>
+                            <option value="8">8th Semester</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="forum-questions">
+                    <div class="question-card">
+                        <div class="question-stats">
+                            <div class="stat">
+                                <span class="stat-value">5</span>
+                                <span class="stat-label">Answers</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">12</span>
+                                <span class="stat-label">Views</span>
+                            </div>
+                        </div>
+                        <div class="question-content">
+                            <h3 class="question-title">
+                                <a href="question-details.html">How to prepare for Database Systems final exam?</a>
+                            </h3>
+                            <div class="question-meta">
+                                <span class="question-category">Exams</span>
+                                <span class="question-semester">5th Semester</span>
+                                <span class="question-time">Posted 2 days ago</span>
+                            </div>
+                            <p class="question-excerpt">I'm struggling with the Database Systems course and the final exam is approaching. What topics should I focus on? Any tips or resources would be helpful...</p>
+                            <div class="question-tags">
+                                <span class="tag">Database</span>
+                                <span class="tag">SQL</span>
+                                <span class="tag">Exam Prep</span>
+                            </div>
+                            <div class="question-author">
+                                <img src="female" alt="User Avatar">
+                                <span>Asked by: Zainab Malik</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="question-card">
+                        <div class="question-stats">
+                            <div class="stat">
+                                <span class="stat-value">3</span>
+                                <span class="stat-label">Answers</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">8</span>
+                                <span class="stat-label">Views</span>
+                            </div>
+                        </div>
+                        <div class="question-content">
+                            <h3 class="question-title">
+                                <a href="question-details.html">Recommended resources for learning Data Structures?</a>
+                            </h3>
+                            <div class="question-meta">
+                                <span class="question-category">Courses</span>
+                                <span class="question-semester">3rd Semester</span>
+                                <span class="question-time">Posted 3 days ago</span>
+                            </div>
+                            <p class="question-excerpt">I'm looking for good resources to learn Data Structures. Any recommendations for books, online courses, or YouTube channels that explain the concepts well?</p>
+                            <div class="question-tags">
+                                <span class="tag">Data Structures</span>
+                                <span class="tag">Algorithms</span>
+                                <span class="tag">Learning Resources</span>
+                            </div>
+                            <div class="question-author">
+                                <img src="male" alt="User Avatar">
+                                <span>Asked by: Ali Hassan</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="question-card">
+                        <div class="question-stats">
+                            <div class="stat">
+                                <span class="stat-value">0</span>
+                                <span class="stat-label">Answers</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">4</span>
+                                <span class="stat-label">Views</span>
+                            </div>
+                        </div>
+                        <div class="question-content">
+                            <h3 class="question-title">
+                                <a href="question-details.html">How to approach the final year project?</a>
+                            </h3>
+                            <div class="question-meta">
+                                <span class="question-category">Projects</span>
+                                <span class="question-semester">7th Semester</span>
+                                <span class="question-time">Posted 5 hours ago</span>
+                            </div>
+                            <p class="question-excerpt">I'm about to start my final year project and I'm feeling overwhelmed. How should I approach it? Any advice on selecting a topic and planning the project?</p>
+                            <div class="question-tags">
+                                <span class="tag">FYP</span>
+                                <span class="tag">Project Management</span>
+                                <span class="tag">Research</span>
+                            </div>
+                            <div class="question-author anonymous">
+                                <i class="fas fa-user-secret"></i>
+                                <span>Asked anonymously</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="question-card">
+                        <div class="question-stats">
+                            <div class="stat">
+                                <span class="stat-value">7</span>
+                                <span class="stat-label">Answers</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">23</span>
+                                <span class="stat-label">Views</span>
+                            </div>
+                        </div>
+                        <div class="question-content">
+                            <h3 class="question-title">
+                                <a href="question-details.html">Internship opportunities for CS students</a>
+                            </h3>
+                            <div class="question-meta">
+                                <span class="question-category">Career</span>
+                                <span class="question-semester">6th Semester</span>
+                                <span class="question-time">Posted 1 week ago</span>
+                            </div>
+                            <p class="question-excerpt">I'm looking for summer internship opportunities for CS students. Does anyone have recommendations for companies that offer good internship programs?</p>
+                            <div class="question-tags">
+                                <span class="tag">Internship</span>
+                                <span class="tag">Career</span>
+                                <span class="tag">CS</span>
+                            </div>
+                            <div class="question-author">
+                                <img src="male" alt="User Avatar">
+                                <span>Asked by: Usman Khan</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="question-card">
+                        <div class="question-stats">
+                            <div class="stat">
+                                <span class="stat-value">2</span>
+                                <span class="stat-label">Answers</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">9</span>
+                                <span class="stat-label">Views</span>
+                            </div>
+                        </div>
+                        <div class="question-content">
+                            <h3 class="question-title">
+                                <a href="question-details.html">Tips for balancing multiple courses with projects</a>
+                            </h3>
+                            <div class="question-meta">
+                                <span class="question-category">General</span>
+                                <span class="question-semester">5th Semester</span>
+                                <span class="question-time">Posted 4 days ago</span>
+                            </div>
+                            <p class="question-excerpt">This semester I'm taking 5 courses and each has multiple projects. How do you manage your time effectively to balance all the coursework?</p>
+                            <div class="question-tags">
+                                <span class="tag">Time Management</span>
+                                <span class="tag">Study Tips</span>
+                                <span class="tag">Projects</span>
+                            </div>
+                            <div class="question-author">
+                                <img src="female" alt="User Avatar">
+                                <span>Asked by: Fatima Ali</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pagination">
+                    <button class="pagination-btn active">1</button>
+                    <button class="pagination-btn">2</button>
+                    <button class="pagination-btn">3</button>
+                    <button class="pagination-btn">4</button>
+                    <button class="pagination-btn">5</button>
+                    <button class="pagination-btn next">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Ask Question Modal -->
+    <div class="modal" id="ask-question-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Ask a Question</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="ask-question-form">
+                    <div class="form-group">
+                        <label for="question-title">Question Title</label>
+                        <input type="text" id="question-title" name="title" required minlength="5" placeholder="Be specific and concise">
+                        <small class="form-text">Minimum 5 characters</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="question-category">Category</label>
+                        <select id="question-category" name="category" required>
+                            <option value="">Select Category</option>
+                            <option value="general">General</option>
+                            <option value="courses">Courses</option>
+                            <option value="exams">Exams & Quizzes</option>
+                            <option value="projects">Projects</option>
+                            <option value="career">Career</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="question-semester">Related Semester</label>
+                        <select id="question-semester" name="semester" required>
+                            <option value="">Select Semester</option>
+                            <option value="1">1st Semester</option>
+                            <option value="2">2nd Semester</option>
+                            <option value="3">3rd Semester</option>
+                            <option value="4">4th Semester</option>
+                            <option value="5">5th Semester</option>
+                            <option value="6">6th Semester</option>
+                            <option value="7">7th Semester</option>
+                            <option value="8">8th Semester</option>
+                            <option value="all">All Semesters</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="question-content">Question Details</label>
+                        <textarea id="question-content" name="content" rows="6" required minlength="10" placeholder="Provide all the details needed to answer your question"></textarea>
+                        <small class="form-text">Minimum 10 characters</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="question-tags">Tags</label>
+                        <input type="text" id="question-tags" name="tags" placeholder="Add up to 5 tags separated by commas">
+                        <small class="form-text">E.g., Database, SQL, Algorithms</small>
+                    </div>
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="anonymous-question" name="anonymous">
+                        <label for="anonymous-question">Post anonymously</label>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Post Question</button>
+                        <button type="button" class="btn btn-outline modal-close">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/forum.js"></script>
+</body>
+</html>

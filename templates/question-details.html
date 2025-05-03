@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question Details - FAST Parhai</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/question-details.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>FAST Parhai</h2>
+                <button id="sidebarToggle" class="sidebar-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <div class="sidebar-user">
+                <div class="user-avatar">
+                    <img src="https://via.placeholder.com/80" alt="User Avatar">
+                </div>
+                <div class="user-info">
+                    <h3 id="userName">{{ current_user.username }}</h3>
+                    <p>{{ current_user.semester or '' }}</p>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="{{ url_for('dashboard') }}">
+                            <i class="fas fa-home"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('upload_notes') }}">
+                            <i class="fas fa-upload"></i>
+                            <span>Upload Notes</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('browse_notes') }}">
+                            <i class="fas fa-book"></i>
+                            <span>Browse Notes</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="{{ url_for('forum') }}">
+                            <i class="fas fa-comments"></i>
+                            <span>Forum</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('profile') }}">
+                            <i class="fas fa-user"></i>
+                            <span>Profile</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('leaderboard') }}">
+                            <i class="fas fa-trophy"></i>
+                            <span>Leaderboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('settings') }}">
+                            <i class="fas fa-cog"></i>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-divider"></li>
+                    <li>
+                        <a href="{{ url_for('logout') }}" id="logoutBtn">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="content-header">
+                <div class="header-left">
+                    <h1>Question Details</h1>
+                </div>
+                <div class="header-right">
+                    <div class="theme-toggle">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="question-container">
+                <!-- Question Header -->
+                <div class="question-header">
+                    <div class="breadcrumbs">
+                        <a href="{{ url_for('forum') }}">Forum</a>
+                        <i class="fas fa-chevron-right"></i>
+                        <a href="#">Data Structures</a>
+                        <i class="fas fa-chevron-right"></i>
+                        <span>Current Question</span>
+                    </div>
+                    <div class="question-actions">
+                        <button class="btn btn-outline btn-sm">
+                            <i class="fas fa-bookmark"></i>
+                            <span>Save</span>
+                        </button>
+                        <button class="btn btn-outline btn-sm">
+                            <i class="fas fa-share-alt"></i>
+                            <span>Share</span>
+                        </button>
+                        <button class="btn btn-outline btn-sm report-btn">
+                            <i class="fas fa-flag"></i>
+                            <span>Report</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Question Content -->
+                <div class="question-content">
+                    <div class="question-main">
+                        <div class="question-title">
+                            <h2>How to implement a balanced binary search tree in C++?</h2>
+                            <div class="question-meta">
+                                <span class="question-tag">Data Structures</span>
+                                <span class="question-tag">C++</span>
+                                <span class="question-tag">Algorithms</span>
+                                <span class="question-status open">Open</span>
+                            </div>
+                        </div>
+                        <div class="question-body">
+                            <p>I'm working on a project that requires a balanced binary search tree implementation in C++. I've tried implementing an AVL tree, but I'm having issues with the rotation logic during insertion and deletion.</p>
+                            
+                            <p>Here's my current implementation:</p>
+                            
+                            <div class="code-block">
+                                <pre><code class="language-cpp">
+struct Node {
+    int key;
+    Node* left;
+    Node* right;
+    int height;
+    
+    Node(int k) : key(k), left(nullptr), right(nullptr), height(1) {}
+};
+
+int getHeight(Node* node) {
+    if (node == nullptr) return 0;
+    return node->height;
+}
+
+int getBalanceFactor(Node* node) {
+    if (node == nullptr) return 0;
+    return getHeight(node->left) - getHeight(node->right);
+}
+
+// Right rotation
+Node* rightRotate(Node* y) {
+    Node* x = y->left;
+    Node* T2 = x->right;
+    
+    // Perform rotation
+    x->right = y;
+    y->left = T2;
+    
+    // Update heights
+    y->height = max(getHeight(y->left), getHeight(y->right)) + 1;
+    x->height = max(getHeight(x->left), getHeight(x->right)) + 1;
+    
+    return x;
+}
+
+// Left rotation
+Node* leftRotate(Node* x) {
+    Node* y = x->right;
+    Node* T2 = y->left;
+    
+    // Perform rotation
+    y->left = x;
+    x->right = T2;
+    
+    // Update heights
+    x->height = max(getHeight(x->left), getHeight(x->right)) + 1;
+    y->height = max(getHeight(y->left), getHeight(y->right)) + 1;
+    
+    return y;
+}
+
+// Insert a node
+Node* insert(Node* node, int key) {
+    // Standard BST insert
+    if (node == nullptr) return new Node(key);
+    
+    if (key < node->key)
+        node->left = insert(node->left, key);
+    else if (key > node->key)
+        node->right = insert(node->right, key);
+    else // Equal keys not allowed
+        return node;
+    
+    // Update height of current node
+    node->height = max(getHeight(node->left), getHeight(node->right)) + 1;
+    
+    // Get balance factor
+    int balance = getBalanceFactor(node);
+    
+    // Left Left Case
+    if (balance > 1 && key < node->left->key)
+        return rightRotate(node);
+    
+    // Right Right Case
+    if (balance < -1 && key > node->right->key)
+        return leftRotate(node);
+    
+    // Left Right Case
+    if (balance > 1 && key > node->left->key) {
+        node->left = leftRotate(node->left);
+        return rightRotate(node);
+    }
+    
+    // Right Left Case
+    if (balance < -1 && key < node->right->key) {
+        node->right = rightRotate(node->right);
+        return leftRotate(node);
+    }
+    
+    return node;
+}
+                                </code></pre>
+                            </div>
+                            
+                            <p>The issue I'm facing is that after multiple insertions and deletions, the tree doesn't seem to maintain its balance property. I suspect there's an issue with my rotation logic or balance factor calculation.</p>
+                            
+                            <p>Has anyone implemented an AVL tree or any other balanced BST in C++ that can help me identify the issue? Alternatively, are there any good libraries that provide efficient balanced BST implementations?</p>
+                            
+                            <div class="question-attachments">
+                                <h4>Attachments:</h4>
+                                <div class="attachment">
+                                    <i class="fas fa-file-code"></i>
+                                    <span>avl_tree.cpp</span>
+                                    <a href="#" class="download-link">Download</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="question-footer">
+                            <div class="question-stats">
+                                <div class="stat">
+                                    <i class="fas fa-eye"></i>
+                                    <span>124 views</span>
+                                </div>
+                                <div class="stat">
+                                    <i class="fas fa-comment"></i>
+                                    <span>8 answers</span>
+                                </div>
+                                <div class="stat">
+                                    <i class="fas fa-clock"></i>
+                                    <span>Posted 2 days ago</span>
+                                </div>
+                            </div>
+                            <div class="question-author">
+                                <div class="author-info">
+                                    <span>Asked by</span>
+                                    <a href="{{ url_for('profile') }}" class="author-name">Usman Malik</a>
+                                </div>
+                                <div class="author-avatar">
+                                    <img src="https://via.placeholder.com/40" alt="Author Avatar">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="question-voting">
+                            <button class="vote-btn upvote">
+                                <i class="fas fa-chevron-up"></i>
+                            </button>
+                            <span class="vote-count">15</span>
+                            <button class="vote-btn downvote">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Answers Section -->
+                <div class="answers-section">
+                    <div class="section-header">
+                        <h3>8 Answers</h3>
+                        <div class="sort-options">
+                            <span>Sort by:</span>
+                            <select id="answerSort">
+                                <option value="votes">Votes</option>
+                                <option value="newest">Newest</option>
+                                <option value="oldest">Oldest</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Answer 1 (Accepted) -->
+                    <div class="answer accepted">
+                        <div class="answer-content">
+                            <div class="answer-body">
+                                <p>I've found the issue in your implementation. The problem is in your <code>getBalanceFactor</code> function and how you're handling the rotations.</p>
+                                
+                                <p>First, let's fix the <code>getBalanceFactor</code> function:</p>
+                                
+                                <div class="code-block">
+                                    <pre><code class="language-cpp">
+int getBalanceFactor(Node* node) {
+    if (node == nullptr) return 0;
+    return getHeight(node->left) - getHeight(node->right);
+}
+                                    </code></pre>
+                                </div>
+                                
+                                <p>This looks correct. However, the issue might be in how you're updating heights after rotations. Make sure you're updating heights in the correct order:</p>
+                                
+                                <div class="code-block">
+                                    <pre><code class="language-cpp">
+// Right rotation
+Node* rightRotate(Node* y) {
+    Node* x = y->left;
+    Node* T2 = x->right;
+    
+    // Perform rotation
+    x->right = y;
+    y->left = T2;
+    
+    // Update heights - update y first, then x
+    y->height = 1 + max(getHeight(y->left), getHeight(y->right));
+    x->height = 1 + max(getHeight(x->left), getHeight(x->right));
+    
+    return x;
+}
+
+// Left rotation
+Node* leftRotate(Node* x) {
+    Node* y = x->right;
+    Node* T2 = y->left;
+    
+    // Perform rotation
+    y->left = x;
+    x->right = T2;
+    
+    // Update heights - update x first, then y
+    x->height = 1 + max(getHeight(x->left), getHeight(x->right));
+    y->height = 1 + max(getHeight(y->left), getHeight(y->right));
+    
+    return y;
+}
+                                    </code></pre>
+                                </div>
+                                
+                                <p>Also, you need to implement a proper deletion function that maintains the balance property. Here's a simplified version:</p>
+                                
+                                <div class="code-block">
+                                    <pre><code class="language-cpp">
+Node* deleteNode(Node* root, int key) {
+    // Standard BST delete
+    if (root == nullptr) return root;
+    
+    if (key < root->key)
+        root->left = deleteNode(root->left, key);
+    else if (key > root->key)
+        root->right = deleteNode(root->right, key);
+    else {
+        // Node with only one child or no child
+        if (root->left == nullptr) {
+            Node* temp = root->right;
+            delete root;
+            return temp;
+        } else if (root->right == nullptr) {
+            Node* temp = root->left;
+            delete root;
+            return temp;
+        }
+        
+        // Node with two children
+        Node* temp = minValueNode(root->right);
+        root->key = temp->key;
+        root->right = deleteNode(root->right, temp->key);
+    }
+    
+    // If tree had only one node
+    if (root == nullptr) return root;
+    
+    // Update height
+    root->height = 1 + max(getHeight(root->left), getHeight(root->right));
+    
+    // Get balance factor
+    int balance = getBalanceFactor(root);
+    
+    // Same rotation cases as in insert
+    // Left Left Case
+    if (balance > 1 && getBalanceFactor(root->left) >= 0)
+        return rightRotate(root);
+    
+    // Left Right Case
+    if (balance > 1 && getBalanceFactor(root->left) < 0) {
+        root->left = leftRotate(root->left);
+        return rightRotate(root);
+    }
+    
+    // Right Right Case
+    if (balance < -1 && getBalanceFactor(root->right) <= 0)
+        return leftRotate(root);
+    
+    // Right Left Case
+    if (balance < -1 && getBalanceFactor(root->right) > 0) {
+        root->right = rightRotate(root->right);
+        return leftRotate(root);
+    }
+    
+    return root;
+}
+
+Node* minValueNode(Node* node) {
+    Node* current = node;
+    while (current->left != nullptr)
+        current = current->left;
+    return current;
+}
+                                    </code></pre>
+                                </div>
+                                
+                                <p>If you're looking for a library solution, the C++ Standard Library provides <code>std::set</code> and <code>std::map</code> which are typically implemented as balanced binary search trees (often Red-Black trees). For most applications, these are sufficient and well-optimized.</p>
+                                
+                                <p>If you need more control, Boost provides more specialized tree implementations.</p>
+                            </div>
+                            <div class="answer-footer">
+                                <div class="answer-meta">
+                                    <span class="answered-time">Answered 2 days ago</span>
+                                    <span class="edited-time">Edited 1 day ago</span>
+                                </div>
+                                <div class="answer-author">
+                                    <div class="author-info">
+                                        <span>Answered by</span>
+                                        <a href="{{ url_for('profile') }}" class="author-name">Fatima Ali</a>
+                                        <span class="author-badge">Top Contributor</span>
+                                    </div>
+                                    <div class="author-avatar">
+                                        <img src="https://via.placeholder.com/40" alt="Author Avatar">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="answer-voting">
+                                <button class="vote-btn upvote active">
+                                    <i class="fas fa-chevron-up"></i>
+                                </button>
+                                <span class="vote-count">23</span>
+                                <button class="vote-btn downvote">
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div class="accept-answer">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Accepted</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Answer 2 -->
+                    <div class="answer">
+                        <div class="answer-content">
+                            <div class="answer-body">
+                                <p>Instead of implementing an AVL tree from scratch, you might want to consider using a Red-Black tree which is another type of self-balancing binary search tree with good performance characteristics.</p>
+                                
+                                <p>Here's a simple implementation of a Red-Black tree in C++:</p>
+                                
+                                <div class="code-block">
+                                    <pre><code class="language-cpp">
+// Red-Black Tree implementation
+// (Code snippet shortened for brevity)
+enum Color { RED, BLACK };
+
+struct Node {
+    int key;
+    Color color;
+    Node *left, *right, *parent;
+    
+    Node(int k) : key(k), color(RED), left(nullptr), right(nullptr), parent(nullptr) {}
+};
+
+class RedBlackTree {
+private:
+    Node* root;
+    
+    // Helper functions for insertion and deletion
+    void leftRotate(Node* x);
+    void rightRotate(Node* y);
+    void fixInsert(Node* k);
+    // ... other helper functions
+    
+public:
+    RedBlackTree() : root(nullptr) {}
+    
+    void insert(int key);
+    void remove(int key);
+    Node* search(int key);
+    // ... other public methods
+};
+                                    </code></pre>
+                                </div>
+                                
+                                <p>The main advantage of Red-Black trees over AVL trees is that they require fewer rotations during insertion and deletion, making them more efficient for applications with frequent modifications.</p>
+                                
+                                <p>However, if you're not implementing this for educational purposes, I strongly recommend using the C++ Standard Library containers:</p>
+                                
+                                <div class="code-block">
+                                    <pre><code class="language-cpp">
+#include <set>
+#include <map>
+
+// Using set (stores unique keys)
+std::set<int> balancedSet;
+balancedSet.insert(10);
+balancedSet.insert(20);
+// Check if a key exists
+if (balancedSet.find(10) != balancedSet.end()) {
+    // Key exists
+}
+
+// Using map (stores key-value pairs)
+std::map<int, std::string> balancedMap;
+balancedMap[10] = "Ten";
+balancedMap[20] = "Twenty";
+// Access a value
+std::string value = balancedMap[10]; // "Ten"
+                                    </code></pre>
+                                </div>
+                                
+                                <p>These containers are implemented as balanced binary search trees (typically Red-Black trees) and are highly optimized for performance.</p>
+                            </div>
+                            <div class="answer-footer">
+                                <div class="answer-meta">
+                                    <span class="answered-time">Answered 1 day ago</span>
+                                </div>
+                                <div class="answer-author">
+                                    <div class="author-info">
+                                        <span>Answered by</span>
+                                        <a href="{{ url_for('profile') }}" class="author-name">Hassan Ahmed</a>
+                                    </div>
+                                    <div class="author-avatar">
+                                        <img src="https://via.placeholder.com/40" alt="Author Avatar">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="answer-voting">
+                                <button class="vote-btn upvote">
+                                    <i class="fas fa-chevron-up"></i>
+                                </button>
+                                <span class="vote-count">12</span>
+                                <button class="vote-btn downvote">
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- More answers would be here -->
+                    
+                    <!-- Your Answer Section -->
+                    <div class="your-answer-section">
+                        <h3>Your Answer</h3>
+                        <div class="answer-editor">
+                            <div class="editor-toolbar">
+                                <button class="toolbar-btn" title="Bold"><i class="fas fa-bold"></i></button>
+                                <button class="toolbar-btn" title="Italic"><i class="fas fa-italic"></i></button>
+                                <button class="toolbar-btn" title="Code"><i class="fas fa-code"></i></button>
+                                <button class="toolbar-btn" title="Link"><i class="fas fa-link"></i></button>
+                                <button class="toolbar-btn" title="Image"><i class="fas fa-image"></i></button>
+                                <button class="toolbar-btn" title="List"><i class="fas fa-list-ul"></i></button>
+                                <button class="toolbar-btn" title="Numbered List"><i class="fas fa-list-ol"></i></button>
+                            </div>
+                            <textarea id="answerText" placeholder="Write your answer here..."></textarea>
+                            <div class="editor-footer">
+                                <div class="attachment-upload">
+                                    <label for="fileUpload" class="btn btn-outline btn-sm">
+                                        <i class="fas fa-paperclip"></i>
+                                        <span>Attach File</span>
+                                    </label>
+                                    <input type="file" id="fileUpload" hidden>
+                                </div>
+                                <div class="markdown-hint">
+                                    <i class="fab fa-markdown"></i>
+                                    <span>Markdown supported</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary submit-answer-btn">Post Your Answer</button>
+                    </div>
+                </div>
+
+                <!-- Related Questions -->
+                <div class="related-questions">
+                    <h3>Related Questions</h3>
+                    <div class="related-list">
+                        <div class="related-item">
+                            <a href="#">What's the difference between AVL trees and Red-Black trees?</a>
+                            <div class="related-meta">
+                                <span>15 answers</span>
+                                <span>•</span>
+                                <span>3 days ago</span>
+                            </div>
+                        </div>
+                        <div class="related-item">
+                            <a href="#">Implementing a B-tree in C++</a>
+                            <div class="related-meta">
+                                <span>8 answers</span>
+                                <span>•</span>
+                                <span>1 week ago</span>
+                            </div>
+                        </div>
+                        <div class="related-item">
+                            <a href="#">How to balance a binary search tree?</a>
+                            <div class="related-meta">
+                                <span>22 answers</span>
+                                <span>•</span>
+                                <span>2 weeks ago</span>
+                            </div>
+                        </div>
+                        <div class="related-item">
+                            <a href="#">Performance comparison of different tree data structures</a>
+                            <div class="related-meta">
+                                <span>10 answers</span>
+                                <span>•</span>
+                                <span>1 month ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Sidebar Content -->
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/question-details.js') }}"></script>
+</body>
+</html> 

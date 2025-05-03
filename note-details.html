@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Note Details - FAST Parhai</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/note-details.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-layout">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>FAST Parhai</h2>
+                <button class="sidebar-close" id="sidebar-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="user-profile">
+                <div class="user-avatar">
+                    <img src="male" alt="User Avatar" id="user-avatar">
+                </div>
+                <div class="user-info">
+                    <h3 id="user-name">Saad</h3>
+                    <p id="user-semester">Semester 5</p>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="dashboard.html">
+                            <i class="fas fa-home"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="upload-notes.html">
+                            <i class="fas fa-upload"></i>
+                            <span>Upload Notes</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="browse-notes.html">
+                            <i class="fas fa-book"></i>
+                            <span>Browse Notes</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="forum.html">
+                            <i class="fas fa-comments"></i>
+                            <span>Discussion Forum</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="profile.html">
+                            <i class="fas fa-user"></i>
+                            <span>My Profile</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="saved-notes.html">
+                            <i class="fas fa-bookmark"></i>
+                            <span>Saved Notes</span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="#" id="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </aside>
+
+        <div class="main-content">
+            <header class="dashboard-header">
+                <div class="header-left">
+                    <button class="sidebar-toggle" id="sidebar-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search for notes, courses...">
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="theme-toggle">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                    </div>
+                    <div class="user-dropdown">
+                        <img src="female" alt="User Avatar" id="header-avatar">
+                        <div class="user-dropdown-content">
+                            <a href="profile.html">
+                                <i class="fas fa-user"></i>
+                                <span>My Profile</span>
+                            </a>
+                            <a href="settings.html">
+                                <i class="fas fa-cog"></i>
+                                <span>Settings</span>
+                            </a>
+                            <a href="#" id="header-logout-btn">
+                                <i class="fas fa-sign-out-alt"></i>
+                                <span>Logout</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="dashboard-content">
+                <div class="note-details-container">
+                    <div class="note-details-header">
+                        <div class="back-button">
+                            <a href="browse-notes.html">
+                                <i class="fas fa-arrow-left"></i>
+                                <span>Back to Browse</span>
+                            </a>
+                        </div>
+                        <div class="note-actions">
+                            <button class="btn btn-outline btn-sm">
+                                <i class="fas fa-bookmark"></i>
+                                <span>Save</span>
+                            </button>
+                            <button class="btn btn-outline btn-sm">
+                                <i class="fas fa-share-alt"></i>
+                                <span>Share</span>
+                            </button>
+                            <button class="btn btn-outline btn-sm">
+                                <i class="fas fa-flag"></i>
+                                <span>Report</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="note-details-content">
+                        <div class="note-details-main">
+                            <div class="note-details-card">
+                                <div class="note-details-info">
+                                    <div class="file-type pdf">
+                                        <i class="fas fa-file-pdf"></i>
+                                        <span>PDF</span>
+                                    </div>
+                                    <h1>Data Structures Complete Course Notes</h1>
+                                    <div class="note-meta">
+                                        <span class="course-info">CS201 • Semester 3</span>
+                                        <div class="rating">
+                                            <div class="stars">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star-half-alt"></i>
+                                            </div>
+                                            <span class="rating-value">4.5</span>
+                                            <span class="rating-count">(42 ratings)</span>
+                                        </div>
+                                    </div>
+                                    <div class="uploader-info">
+                                        <img src="female" alt="Uploader Avatar">
+                                        <div>
+                                            <p>Uploaded by <a href="#" class="user-link">Fatima Zahra</a></p>
+                                            <p class="upload-date">October 15, 2024</p>
+                                        </div>
+                                    </div>
+                                    <div class="note-stats">
+                                        <div class="stat">
+                                            <i class="fas fa-download"></i>
+                                            <span>128 Downloads</span>
+                                        </div>
+                                        <div class="stat">
+                                            <i class="fas fa-thumbs-up"></i>
+                                            <span>56 Upvotes</span>
+                                        </div>
+                                        <div class="stat">
+                                            <i class="fas fa-eye"></i>
+                                            <span>243 Views</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="note-details-description">
+                                    <h3>Description</h3>
+                                    <p>Comprehensive notes covering all topics from the Data Structures course including arrays, linked lists, trees, graphs, and algorithms. These notes are compiled from lectures, textbooks, and additional resources to provide a complete understanding of the subject.</p>
+                                    <p>The notes include:</p>
+                                    <ul>
+                                        <li>Detailed explanations of all data structures</li>
+                                        <li>Time and space complexity analysis</li>
+                                        <li>Implementation examples in C++</li>
+                                        <li>Practice problems with solutions</li>
+                                        <li>Exam preparation tips</li>
+                                    </ul>
+                                    <p>These notes have been helpful for many students in preparing for midterms and final exams. I hope they help you too!</p>
+                                    <div class="tags">
+                                        <span class="tag">Data Structures</span>
+                                        <span class="tag">Algorithms</span>
+                                        <span class="tag">CS201</span>
+                                        <span class="tag">Complete Notes</span>
+                                    </div>
+                                </div>
+                                <div class="note-details-preview">
+                                    <h3>Preview</h3>
+                                    <div class="preview-container">
+                                        <img src="male" alt="PDF Preview">
+                                        <div class="preview-overlay">
+                                            <p>Download to view the full document</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="note-details-download">
+                                    <button class="btn btn-primary btn-large">
+                                        <i class="fas fa-download"></i>
+                                        <span>Download Notes</span>
+                                    </button>
+                                    <p class="file-info">PDF • 2.5 MB • 42 pages</p>
+                                </div>
+                            </div>
+
+                            <div class="note-details-card">
+                                <div class="note-rating-section">
+                                    <h3>Rate this Note</h3>
+                                    <p>Your rating helps other students find quality notes</p>
+                                    <div class="rating-stars">
+                                        <i class="far fa-star" data-rating="1"></i>
+                                        <i class="far fa-star" data-rating="2"></i>
+                                        <i class="far fa-star" data-rating="3"></i>
+                                        <i class="far fa-star" data-rating="4"></i>
+                                        <i class="far fa-star" data-rating="5"></i>
+                                    </div>
+                                    <div class="rating-text">Click to rate</div>
+                                    <textarea placeholder="Write a review (optional)" class="rating-comment"></textarea>
+                                    <button class="btn btn-primary btn-block submit-rating" disabled>Submit Rating</button>
+                                </div>
+                            </div>
+
+                            <div class="note-details-card">
+                                <div class="note-comments-section">
+                                    <h3>Comments & Questions</h3>
+                                    <div class="comment-form">
+                                        <textarea placeholder="Ask a question or leave a comment about these notes" class="comment-input"></textarea>
+                                        <button class="btn btn-primary post-comment">Post Comment</button>
+                                    </div>
+                                    <div class="comments-list">
+                                        <div class="comment">
+                                            <div class="comment-header">
+                                                <div class="comment-user">
+                                                    <img src="male" alt="User Avatar">
+                                                    <div>
+                                                        <h4>Ali Hassan</h4>
+                                                        <p class="comment-date">October 18, 2024</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="comment-content">
+                                                <p>These notes are incredibly helpful! I was struggling with the concept of AVL trees, but the explanations and diagrams in these notes made it much clearer. Thank you for sharing!</p>
+                                            </div>
+                                            <div class="comment-actions">
+                                                <button class="comment-action">
+                                                    <i class="fas fa-thumbs-up"></i>
+                                                    <span>12</span>
+                                                </button>
+                                                <button class="comment-action">
+                                                    <i class="fas fa-reply"></i>
+                                                    <span>Reply</span>
+                                                </button>
+                                            </div>
+                                            <div class="comment-replies">
+                                                <div class="comment reply">
+                                                    <div class="comment-header">
+                                                        <div class="comment-user">
+                                                            <img src="female" alt="User Avatar">
+                                                            <div>
+                                                                <h4>Fatima Zahra</h4>
+                                                                <p class="comment-date">October 19, 2024</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="comment-content">
+                                                        <p>I'm glad they helped you, Ali! I spent extra time on the AVL tree section because I know many students find it challenging.</p>
+                                                    </div>
+                                                    <div class="comment-actions">
+                                                        <button class="comment-action">
+                                                            <i class="fas fa-thumbs-up"></i>
+                                                            <span>5</span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="comment">
+                                            <div class="comment-header">
+                                                <div class="comment-user">
+                                                    <img src="female" alt="User Avatar">
+                                                    <div>
+                                                        <h4>Sara Khan</h4>
+                                                        <p class="comment-date">October 20, 2024</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="comment-content">
+                                                <p>Do these notes cover the heap data structure in detail? Our professor mentioned it will be a significant part of the final exam.</p>
+                                            </div>
+                                            <div class="comment-actions">
+                                                <button class="comment-action">
+                                                    <i class="fas fa-thumbs-up"></i>
+                                                    <span>3</span>
+                                                </button>
+                                                <button class="comment-action">
+                                                    <i class="fas fa-reply"></i>
+                                                    <span>Reply</span>
+                                                </button>
+                                            </div>
+                                            <div class="comment-replies">
+                                                <div class="comment reply">
+                                                    <div class="comment-header">
+                                                        <div class="comment-user">
+                                                            <img src="female" alt="User Avatar">
+                                                            <div>
+                                                                <h4>Fatima Zahra</h4>
+                                                                <p class="comment-date">October 20, 2024</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="comment-content">
+                                                        <p>Yes, Sara! Pages 24-29 cover heaps in detail, including min-heaps, max-heaps, and heap operations with time complexity analysis. There are also practice problems on page 30.</p>
+                                                    </div>
+                                                    <div class="comment-actions">
+                                                        <button class="comment-action">
+                                                            <i class="fas fa-thumbs-up"></i>
+                                                            <span>7</span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div class="comment reply">
+                                                    <div class="comment-header">
+                                                        <div class="comment-user">
+                                                            <img src="female" alt="User Avatar">
+                                                            <div>
+                                                                <h4>Sara Khan</h4>
+                                                                <p class="comment-date">October 21, 2024</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="comment-content">
+                                                        <p>Perfect! Thank you so much for the quick response. I'll download these notes right away.</p>
+                                                    </div>
+                                                    <div class="comment-actions">
+                                                        <button class="comment-action">
+                                                            <i class="fas fa-thumbs-up"></i>
+                                                            <span>2</span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="comment">
+                                            <div class="comment-header">
+                                                <div class="comment-user">
+                                                    <img src="male" alt="User Avatar">
+                                                    <div>
+                                                        <h4>Ahmed Malik</h4>
+                                                        <p class="comment-date">October 22, 2024</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="comment-content">
+                                                <p>The implementation examples are really well explained. I was able to code a working AVL tree after studying these notes. One suggestion: it would be great if you could add more examples in Java since many students in our class use Java instead of C++.</p>
+                                            </div>
+                                            <div class="comment-actions">
+                                                <button class="comment-action">
+                                                    <i class="fas fa-thumbs-up"></i>
+                                                    <span>9</span>
+                                                </button>
+                                                <button class="comment-action">
+                                                    <i class="fas fa-reply"></i>
+                                                    <span>Reply</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="comments-pagination">
+                                        <button class="btn btn-outline btn-sm pagination-btn active">1</button>
+                                        <button class="btn btn-outline btn-sm pagination-btn">2</button>
+                                        <button class="btn btn-outline btn-sm pagination-btn">
+                                            <i class="fas fa-chevron-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="note-details-sidebar">
+                            <div class="note-details-card">
+                                <div class="uploader-profile">
+                                    <h3>About the Uploader</h3>
+                                    <div class="uploader-info-detailed">
+                                        <img src="female" alt="Uploader Avatar">
+                                        <div>
+                                            <h4><a href="#" class="user-link">Fatima Zahra</a></h4>
+                                            <p>Computer Science • Semester 6</p>
+                                            <div class="uploader-stats">
+                                                <div class="uploader-stat">
+                                                    <i class="fas fa-upload"></i>
+                                                    <span>24 Uploads</span>
+                                                </div>
+                                                <div class="uploader-stat">
+                                                    <i class="fas fa-star"></i>
+                                                    <span>4.8 Avg Rating</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <a href="#" class="btn btn-outline btn-block">View All Notes by Fatima</a>
+                                </div>
+                            </div>
+                            
+                            <div class="note-details-card">
+                                <div class="related-notes">
+                                    <h3>Related Notes</h3>
+                                    <div class="related-notes-list">
+                                        <div class="related-note">
+                                            <div class="related-note-info">
+                                                <div class="file-type pdf">
+                                                    <i class="fas fa-file-pdf"></i>
+                                                </div>
+                                                <div>
+                                                    <h4><a href="#">Data Structures Practice Problems</a></h4>
+                                                    <p>CS201 • 76 Downloads</p>
+                                                    <div class="stars small">
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="far fa-star"></i>
+                                                        <span>4.0</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="related-note">
+                                            <div class="related-note-info">
+                                                <div class="file-type ppt">
+                                                    <i class="fas fa-file-powerpoint"></i>
+                                                </div>
+                                                <div>
+                                                    <h4><a href="#">Algorithm Analysis Slides</a></h4>
+                                                    <p>CS201 • 54 Downloads</p>
+                                                    <div class="stars small">
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star-half-alt"></i>
+                                                        <span>4.5</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="related-note">
+                                            <div class="related-note-info">
+                                                <div class="file-type doc">
+                                                    <i class="fas fa-file-word"></i>
+                                                </div>
+                                                <div>
+                                                    <h4><a href="#">Graph Theory Explained</a></h4>
+                                                    <p>CS201 • 42 Downloads</p>
+                                                    <div class="stars small">
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <span>5.0</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="related-note">
+                                            <div class="related-note-info">
+                                                <div class="file-type pdf">
+                                                    <i class="fas fa-file-pdf"></i>
+                                                </div>
+                                                <div>
+                                                    <h4><a href="#">Data Structures Exam Guide</a></h4>
+                                                    <p>CS201 • 98 Downloads</p>
+                                                    <div class="stars small">
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="far fa-star"></i>
+                                                        <span>4.1</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a href="#" class="btn btn-outline btn-block">View More Related Notes</a>
+                                </div>
+                            </div>
+                            
+                            <div class="note-details-card">
+                                <div class="course-info-section">
+                                    <h3>Course Information</h3>
+                                    <div class="course-details">
+                                        <div class="course-detail">
+                                            <span class="detail-label">Course Code:</span>
+                                            <span class="detail-value">CS201</span>
+                                        </div>
+                                        <div class="course-detail">
+                                            <span class="detail-label">Course Title:</span>
+                                            <span class="detail-value">Data Structures</span>
+                                        </div>
+                                        <div class="course-detail">
+                                            <span class="detail-label">Department:</span>
+                                            <span class="detail-value">Computer Science</span>
+                                        </div>
+                                        <div class="course-detail">
+                                            <span class="detail-label">Credit Hours:</span>
+                                            <span class="detail-value">3+1</span>
+                                        </div>
+                                        <div class="course-detail">
+                                            <span class="detail-label">Instructors:</span>
+                                            <span class="detail-value">Dr. Asad Ali, Dr. Saima Jabeen</span>
+                                        </div>
+                                    </div>
+                                    <a href="#" class="btn btn-outline btn-block">View All CS201 Notes</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <footer class="dashboard-footer">
+                <div class="footer-content">
+                    <p>&copy; 2024 FAST Parhai. All rights reserved.</p>
+                    <div class="footer-links">
+                        <a href="about.html">About</a>
+                    
+                        
+                        <a href="contact.html">Contact Us</a>
+                    
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/note-details.js"></script>
+</body>
+</html>

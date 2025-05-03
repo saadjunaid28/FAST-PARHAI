@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - FAST Parhai</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>FAST Parhai</h2>
+                <button id="sidebarToggle" class="sidebar-toggle" title="Toggle Sidebar">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+            </div>
+            <div class="sidebar-user">
+                <div class="user-avatar">
+                    <img src="https://via.placeholder.com/80" alt="User Avatar">
+                </div>
+                <div class="user-info">
+                    <h3 id="userName">Ahmed Khan</h3>
+                    <p>6th Semester</p>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="active">
+                        <a href="dashboard.html">
+                            <i class="fas fa-home"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="upload-notes.html">
+                            <i class="fas fa-upload"></i>
+                            <span>Upload Notes</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="browse-notes.html">
+                            <i class="fas fa-book"></i>
+                            <span>Browse Notes</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="forum.html">
+                            <i class="fas fa-comments"></i>
+                            <span>Forum</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="profile.html">
+                            <i class="fas fa-user"></i>
+                            <span>Profile</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-divider"></li>
+                    <li>
+                        <a href="#" id="logoutBtn">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="content-header">
+                <div class="header-left">
+                    <button id="headerToggle" class="header-toggle" title="Toggle Sidebar">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1>Dashboard</h1>
+                </div>
+                <div class="header-right">
+                    <div class="theme-toggle">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="dashboard-content">
+                <div class="welcome-banner">
+                    <div class="welcome-text">
+                        <h2>Welcome back, <span id="welcomeUserName">Ahmed</span>!</h2>
+                        <p>Here's what's happening with your academic resources</p>
+                    </div>
+                    <div class="welcome-actions">
+                        <a href="upload-notes.html" class="btn btn-primary">
+                            <i class="fas fa-upload"></i> Upload New Note
+                        </a>
+                        <a href="browse-notes.html" class="btn btn-outline">
+                            <i class="fas fa-search"></i> Browse Notes
+                        </a>
+                    </div>
+                </div>
+
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-upload"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>12</h3>
+                            <p>Your Uploads</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-download"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>87</h3>
+                            <p>Downloads</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>4.7</h3>
+                            <p>Avg. Rating</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>#5</h3>
+                            <p>Leaderboard</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-sections">
+                    <section class="trending-notes">
+                        <div class="section-header">
+                            <h2>Trending Notes</h2>
+                            <a href="browse-notes.html" class="view-all">View All</a>
+                        </div>
+                        <div class="notes-grid">
+                            <div class="note-card">
+                                <div class="note-header">
+                                    <div class="note-type pdf">
+                                        <i class="fas fa-file-pdf"></i>
+                                    </div>
+                                    <div class="note-rating">
+                                        <i class="fas fa-star"></i>
+                                        <span>4.9</span>
+                                    </div>
+                                </div>
+                                <div class="note-body">
+                                    <h3>Data Structures & Algorithms</h3>
+                                    <p class="note-meta">CS201 • 3rd Semester</p>
+                                    <p class="note-author">By: Fatima Ali</p>
+                                </div>
+                                <div class="note-footer">
+                                    <span class="note-downloads">
+                                        <i class="fas fa-download"></i> 234
+                                    </span>
+                                    <a href="note-details.html" class="btn btn-sm">View</a>
+                                </div>
+                            </div>
+                            <div class="note-card">
+                                <div class="note-header">
+                                    <div class="note-type ppt">
+                                        <i class="fas fa-file-powerpoint"></i>
+                                    </div>
+                                    <div class="note-rating">
+                                        <i class="fas fa-star"></i>
+                                        <span>4.7</span>
+                                    </div>
+                                </div>
+                                <div class="note-body">
+                                    <h3>Database Systems</h3>
+                                    <p class="note-meta">CS304 • 5th Semester</p>
+                                    <p class="note-author">By: Usman Khan</p>
+                                </div>
+                                <div class="note-footer">
+                                    <span class="note-downloads">
+                                        <i class="fas fa-download"></i> 187
+                                    </span>
+                                    <a href="note-details.html" class="btn btn-sm">View</a>
+                                </div>
+                            </div>
+                            <div class="note-card">
+                                <div class="note-header">
+                                    <div class="note-type doc">
+                                        <i class="fas fa-file-word"></i>
+                                    </div>
+                                    <div class="note-rating">
+                                        <i class="fas fa-star"></i>
+                                        <span>4.5</span>
+                                    </div>
+                                </div>
+                                <div class="note-body">
+                                    <h3>Software Engineering</h3>
+                                    <p class="note-meta">SE301 • 6th Semester</p>
+                                    <p class="note-author">By: Zainab Malik</p>
+                                </div>
+                                <div class="note-footer">
+                                    <span class="note-downloads">
+                                        <i class="fas fa-download"></i> 156
+                                    </span>
+                                    <a href="note-details.html" class="btn btn-sm">View</a>
+                                </div>
+                            </div>
+                            <div class="note-card">
+                                <div class="note-header">
+                                    <div class="note-type pdf">
+                                        <i class="fas fa-file-pdf"></i>
+                                    </div>
+                                    <div class="note-rating">
+                                        <i class="fas fa-star"></i>
+                                        <span>4.8</span>
+                                    </div>
+                                </div>
+                                <div class="note-body">
+                                    <h3>Artificial Intelligence</h3>
+                                    <p class="note-meta">CS307 • 7th Semester</p>
+                                    <p class="note-author">By: Ali Hassan</p>
+                                </div>
+                                <div class="note-footer">
+                                    <span class="note-downloads">
+                                        <i class="fas fa-download"></i> 203
+                                    </span>
+                                    <a href="note-details.html" class="btn btn-sm">View</a>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="recent-activity">
+                        <div class="section-header">
+                            <h2>Recent Activity</h2>
+                        </div>
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <div class="activity-icon download">
+                                    <i class="fas fa-download"></i>
+                                </div>
+                                <div class="activity-details">
+                                    <p><strong>You downloaded</strong> Operating Systems Final Notes</p>
+                                    <span class="activity-time">2 hours ago</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon upload">
+                                    <i class="fas fa-upload"></i>
+                                </div>
+                                <div class="activity-details">
+                                    <p><strong>You uploaded</strong> Computer Networks Midterm Notes</p>
+                                    <span class="activity-time">Yesterday</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon rating">
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <div class="activity-details">
+                                    <p><strong>You rated</strong> Database Systems Notes with 5 stars</p>
+                                    <span class="activity-time">2 days ago</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon comment">
+                                    <i class="fas fa-comment"></i>
+                                </div>
+                                <div class="activity-details">
+                                    <p><strong>You commented</strong> on Web Development Notes</p>
+                                    <span class="activity-time">3 days ago</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon download">
+                                    <i class="fas fa-download"></i>
+                                </div>
+                                <div class="activity-details">
+                                    <p><strong>You downloaded</strong> Calculus II Complete Notes</p>
+                                    <span class="activity-time">5 days ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="top-contributors">
+                        <div class="section-header">
+                            <h2>Top Contributors</h2>
+                            <a href="leaderboard.html" class="view-all">View Leaderboard</a>
+                        </div>
+                        <div class="contributors-list">
+                            <div class="contributor-card">
+                                <div class="contributor-rank">1</div>
+                                <div class="contributor-avatar">
+                                    <img src="https://via.placeholder.com/50" alt="User Avatar">
+                                </div>
+                                <div class="contributor-info">
+                                    <h4>Fatima Ali</h4>
+                                    <p>CS Department • 8th Semester</p>
+                                </div>
+                                <div class="contributor-stats">
+                                    <div class="stat">
+                                        <i class="fas fa-upload"></i>
+                                        <span>32</span>
+                                    </div>
+                                    <div class="stat">
+                                        <i class="fas fa-star"></i>
+                                        <span>4.9</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="contributor-card">
+                                <div class="contributor-rank">2</div>
+                                <div class="contributor-avatar">
+                                    <img src="https://via.placeholder.com/50" alt="User Avatar">
+                                </div>
+                                <div class="contributor-info">
+                                    <h4>Usman Khan</h4>
+                                    <p>EE Department • 7th Semester</p>
+                                </div>
+                                <div class="contributor-stats">
+                                    <div class="stat">
+                                        <i class="fas fa-upload"></i>
+                                        <span>28</span>
+                                    </div>
+                                    <div class="stat">
+                                        <i class="fas fa-star"></i>
+                                        <span>4.8</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="contributor-card">
+                                <div class="contributor-rank">3</div>
+                                <div class="contributor-avatar">
+                                    <img src="https://via.placeholder.com/50" alt="User Avatar">
+                                </div>
+                                <div class="contributor-info">
+                                    <h4>Zainab Malik</h4>
+                                    <p>CS Department • 6th Semester</p>
+                                </div>
+                                <div class="contributor-stats">
+                                    <div class="stat">
+                                        <i class="fas fa-upload"></i>
+                                        <span>25</span>
+                                    </div>
+                                    <div class="stat">
+                                        <i class="fas fa-star"></i>
+                                        <span>4.7</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="contributor-card">
+                                <div class="contributor-rank">4</div>
+                                <div class="contributor-avatar">
+                                    <img src="https://via.placeholder.com/50" alt="User Avatar">
+                                </div>
+                                <div class="contributor-info">
+                                    <h4>Ali Hassan</h4>
+                                    <p>SE Department • 5th Semester</p>
+                                </div>
+                                <div class="contributor-stats">
+                                    <div class="stat">
+                                        <i class="fas fa-upload"></i>
+                                        <span>21</span>
+                                    </div>
+                                    <div class="stat">
+                                        <i class="fas fa-star"></i>
+                                        <span>4.6</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="contributor-card">
+                                <div class="contributor-rank">5</div>
+                                <div class="contributor-avatar">
+                                    <img src="https://via.placeholder.com/50" alt="User Avatar">
+                                </div>
+                                <div class="contributor-info">
+                                    <h4>Ahmed Khan</h4>
+                                    <p>CS Department • 6th Semester</p>
+                                </div>
+                                <div class="contributor-stats">
+                                    <div class="stat">
+                                        <i class="fas fa-upload"></i>
+                                        <span>18</span>
+                                    </div>
+                                    <div class="stat">
+                                        <i class="fas fa-star"></i>
+                                        <span>4.5</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="announcements-section">
+                    <div class="section-header">
+                        <h2>Announcements</h2>
+                    </div>
+                    <div class="announcement-card">
+                        <div class="announcement-header">
+                            <h3>End of Semester Notes Drive</h3>
+                            <span class="announcement-date">May 15, 2024</span>
+                        </div>
+                        <div class="announcement-body">
+                            <p>As the semester comes to an end, we encourage all students to upload their notes and study materials to help juniors in the upcoming semesters. Top contributors will receive special badges and recognition!</p>
+                        </div>
+                        <div class="announcement-footer">
+                            <span class="announcement-author">From: FAST Parhai Admin</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
