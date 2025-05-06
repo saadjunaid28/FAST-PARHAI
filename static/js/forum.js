@@ -31,31 +31,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const askQuestionForm = document.getElementById("ask-question-form")
     if (askQuestionForm) {
       askQuestionForm.addEventListener("submit", (e) => {
-        e.preventDefault()
+        const submitButton = askQuestionForm.querySelector('button[type="submit"]')
+        const originalText = submitButton.textContent
   
-        // Get form data
-        const title = document.getElementById("question-title").value
-        const category = document.getElementById("question-category").value
-        const semester = document.getElementById("question-semester").value
-        const content = document.getElementById("question-content").value
-        const tags = document.getElementById("question-tags").value
-        const anonymous = document.getElementById("anonymous-question").checked
+        submitButton.disabled = true
+        submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Posting...'
   
-        // Validate form
-        if (!title.trim() || !category || !semester || !content.trim()) {
-          alert("Please fill in all required fields")
-          return
-        }
-  
-        // Submit question
-        submitQuestion({
-          title,
-          category,
-          semester,
-          content,
-          tags,
-          anonymous,
-        })
+        // Let the form submit naturally to the backend
+        // The success message will be shown after the page reloads
       })
     }
   

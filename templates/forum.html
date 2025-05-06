@@ -150,21 +150,34 @@
                                 <a href="#">{{ question.title }}</a>
                             </h3>
                             <div class="question-meta">
-                                <span class="question-category">N/A</span>
-                                <span class="question-semester">N/A</span>
-                                <span class="question-time">N/A</span>
+                                <span class="question-time">Posted {{ question.created_at.strftime('%Y-%m-%d %H:%M') }}</span>
                             </div>
                             <p class="question-excerpt">{{ question.content[:120] }}{% if question.content|length > 120 %}...{% endif %}</p>
-                            <div class="question-tags">
-                                <!-- Add tags if you add them to the model -->
-                            </div>
                             <div class="question-author">
-                                <img src="https://via.placeholder.com/40" alt="User Avatar">
-                                <span>Asked by: {{ question.author_id }}</span>
+                                <img src="{{ url_for('static', filename='images/default-avatar.png') }}" alt="User Avatar">
+                                <span>Asked by: {{ question.author.username }}</span>
                             </div>
+                            {% if question.answers %}
+                            <div class="question-answers" style="margin-top: 1rem;">
+                                {% for answer in question.answers %}
+                                    <div class="answer-card" style="background: #f8f9fa; border-radius: 8px; padding: 0.7rem 1rem; margin-bottom: 0.5rem;">
+                                        <div class="answer-meta" style="font-size: 0.95rem; color: #2193b0; margin-bottom: 0.2rem;">
+                                            <b>{{ answer.author.username }}</b> answered:
+                                        </div>
+                                        <div class="answer-content" style="font-size: 1rem; color: #222;">
+                                            {{ answer.content }}
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            <div class="no-answers" style="color: #888; font-size: 0.95rem; margin-top: 0.7rem;">No answers yet.</div>
+                            {% endif %}
+                            {% if current_user.is_authenticated %}
                             <button class="btn btn-outline btn-sm answer-btn" onclick="openAnswerModal({{ question.id }})">
                                 <i class="fas fa-reply"></i> Answer
                             </button>
+                            {% endif %}
                         </div>
                     </div>
                     {% endfor %}
@@ -192,51 +205,16 @@
                 <button class="modal-close">&times;</button>
             </div>
             <div class="modal-body">
-                <form id="ask-question-form">
+                <form id="ask-question-form" method="POST" action="{{ url_for('ask_question') }}">
                     <div class="form-group">
                         <label for="question-title">Question Title</label>
                         <input type="text" id="question-title" name="title" required minlength="5" placeholder="Be specific and concise">
                         <small class="form-text">Minimum 5 characters</small>
                     </div>
                     <div class="form-group">
-                        <label for="question-category">Category</label>
-                        <select id="question-category" name="category" required>
-                            <option value="">Select Category</option>
-                            <option value="general">General</option>
-                            <option value="courses">Courses</option>
-                            <option value="exams">Exams & Quizzes</option>
-                            <option value="projects">Projects</option>
-                            <option value="career">Career</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="question-semester">Related Semester</label>
-                        <select id="question-semester" name="semester" required>
-                            <option value="">Select Semester</option>
-                            <option value="1">1st Semester</option>
-                            <option value="2">2nd Semester</option>
-                            <option value="3">3rd Semester</option>
-                            <option value="4">4th Semester</option>
-                            <option value="5">5th Semester</option>
-                            <option value="6">6th Semester</option>
-                            <option value="7">7th Semester</option>
-                            <option value="8">8th Semester</option>
-                            <option value="all">All Semesters</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
                         <label for="question-content">Question Details</label>
                         <textarea id="question-content" name="content" rows="6" required minlength="10" placeholder="Provide all the details needed to answer your question"></textarea>
                         <small class="form-text">Minimum 10 characters</small>
-                    </div>
-                    <div class="form-group">
-                        <label for="question-tags">Tags</label>
-                        <input type="text" id="question-tags" name="tags" placeholder="Add up to 5 tags separated by commas">
-                        <small class="form-text">E.g., Database, SQL, Algorithms</small>
-                    </div>
-                    <div class="form-group checkbox-group">
-                        <input type="checkbox" id="anonymous-question" name="anonymous">
-                        <label for="anonymous-question">Post anonymously</label>
                     </div>
                     <div class="form-actions">
                         <button type="submit" class="btn btn-primary">Post Question</button>

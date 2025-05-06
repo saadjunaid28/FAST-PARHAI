@@ -33,25 +33,15 @@ document.addEventListener("DOMContentLoaded", () => {
   
     if (contactForm) {
       contactForm.addEventListener("submit", (e) => {
-        e.preventDefault()
-  
-        // Simulate form submission with loading state
+        // Remove e.preventDefault() to allow form submission
         const submitButton = contactForm.querySelector(".btn-submit")
         const originalText = submitButton.textContent
   
         submitButton.disabled = true
         submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...'
   
-        // Simulate API call delay
-        setTimeout(() => {
-          contactForm.style.display = "none"
-          formSuccess.style.display = "block"
-  
-          // Reset form for future use
-          contactForm.reset()
-          submitButton.disabled = false
-          submitButton.textContent = originalText
-        }, 2000)
+        // Let the form submit naturally to the backend
+        // The success message will be shown after the page reloads
       })
     }
   

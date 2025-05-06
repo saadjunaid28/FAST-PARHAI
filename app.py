@@ -45,13 +45,16 @@ class Question(db.Model):
     title = db.Column(db.String(200), nullable=False)
     content = db.Column(db.Text, nullable=False)
     author_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    author = db.relationship('User', backref='questions')
     answers = db.relationship('Answer', backref='question', lazy=True)
+    created_at = db.Column(db.DateTime, nullable=False, default=db.func.current_timestamp())
 
 class Answer(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.Text, nullable=False)
     author_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     question_id = db.Column(db.Integer, db.ForeignKey('question.id'), nullable=False)
+    author = db.relationship('User', backref='answers')
 
 class ContactMessage(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -82,15 +85,22 @@ def about():
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():
     if request.method == 'POST':
-        name = request.form['name']
-        email = request.form['email']
-        subject = request.form['subject']
-        message = request.form['message']
-        contact_msg = ContactMessage(name=name, email=email, subject=subject, message=message)
-        db.session.add(contact_msg)
-        db.session.commit()
-        flash('Your message has been sent!')
-        return redirect(url_for('contact'))
+        try:
+            name = request.form['name']
+            email = request.form['email']
+            subject = request.form['subject']
+            message = request.form['message']
+            
+            contact_msg = ContactMessage(name=name, email=email, subject=subject, message=message)
+            db.session.add(contact_msg)
+            db.session.commit()
+            
+            flash('Your message has been sent successfully!', 'success')
+            return redirect(url_for('contact'))
+        except Exception as e:
+            flash('There was an error sending your message. Please try again.', 'error')
+            return redirect(url_for('contact'))
+            
     return render_template('contact.html')
 
 @app.route('/browse-notes')
@@ -112,7 +122,7 @@ def note_details(note_id):
 
 @app.route('/forum')
 def forum():
-    questions = Question.query.all()
+    questions = Question.query.order_by(Question.created_at.desc()).all()
     return render_template('forum.html', questions=questions)
 
 @app.route('/answer', methods=['POST'])
@@ -288,6 +298,25 @@ def upload():
 def uploaded_file(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
 
+@app.route('/ask-question', methods=['POST'])
+@login_required
+def ask_question():
+    if request.method == 'POST':
+        title = request.form['title']
+        content = request.form['content']
+        
+        question = Question(
+            title=title,
+            content=content,
+            author_id=current_user.id
+        )
+        
+        db.session.add(question)
+        db.session.commit()
+        
+        flash('Your question has been posted successfully!', 'success')
+        return redirect(url_for('forum'))
+
 def create_admin_user():
     admin_username = "admin"
     admin_email = "admin@fastparhai.com"
@@ -310,4 +339,4 @@ if __name__ == '__main__':
     with app.app_context():
         db.create_all()
         create_admin_user()
-    app.run(debug=True) 
+    app.run(host='0.0.0.0', port=8080) 
